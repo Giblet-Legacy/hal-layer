@@ -23,3 +23,30 @@ NOTES.md — open questions, divergences and decisions for P15 HAL.
   (capsule hash or ledger entry hash).
 - No automatic λ updates from seal outcomes. That coupling lives in
   a consumer, not in P15.
+
+## Decisions — V2 (v1.1.0, laptop audit)
+- V2 is a new file (`hal_v2.py`); `hal.py` is frozen and untouched.
+- Non-number λ → TypeError, NaN/inf → ValueError (stack convention,
+  as P14 V2). This corrects the wording of SPEC.md §3.1/§3.2.
+- The validator's identity is `signature.key_id`. No top-level
+  `key_id` (SPEC.md §2 listed one; v1 never emitted it).
+- Separation is proven, not claimed: `"attested"` requires an
+  embedded λ attestation, signed by a key other than the seal signer,
+  that verifies. A self-signed attestation records `"none"`.
+- `create_seal` requires the caller to name the attester key it
+  trusts. `verify_seal` checks attestation integrity on its own and
+  pins the attester only if one is passed.
+- Domain ladders may raise the quarantine line, never lower it below
+  0.60. Re-registering a domain with different thresholds is refused.
+- Outcome mapping returns a P14 observation and stops there; it does
+  not update λ. This keeps the v1 decision above intact. Deltas are
+  asymmetric (+0.10 upheld, −0.25 overturned): trust is lost faster
+  than earned. Value floored at 0.01 (P11 requires value > 0).
+- `rationale` must be non-empty in V2. A seal without a reason is a
+  signature without accountability.
+- `append_seal_to_ledger` verifies before appending; the ledger key
+  may differ from the seal key. P4 is imported lazily.
+
+## Open questions — V2
+- Should attestations expire (max age relative to the seal)?
+- Should outcome deltas scale by tier?

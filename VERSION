@@ -1,5 +1,6 @@
 # VERSION — P15 HAL (hal-layer)
 # Function: the current release version of this layer. Advances only on freeze.
 # 1.0.0 — P15 frozen. Tests pass (18/18).
+# 1.1.0 — V2 layer (hal_v2.py) added; v1 untouched. Tests pass (83/83).
 
-1.0.0
+1.1.0

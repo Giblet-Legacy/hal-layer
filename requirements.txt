@@ -1,0 +1,8 @@
+# requirements.txt — P15 HAL (hal-layer)
+# Function: runtime dependencies for P15. P1/P2/P4 are not pip
+# packages: they are the sibling checkouts ../envelope-layer,
+# ../sign-layer and ../ledger-layer.
+#
+# Tests additionally need pytest (test tool, not a runtime dependency).
+
+cryptography

@@ -13,4 +13,4 @@ Depends:  P14 Leighton Engine
 Consumed: SC-OS, The Cockpit, The Legacy
 Licence:  MSL-1.0
 Author:   James Gilbert (Giblets Forge)
-Status:   0.0.0-dev (in build, pre-freeze)
+Status:   1.1.0 — v1 frozen (hal.py, SPEC.md); V2 layer hal_v2.py (SPEC_V2.md)
