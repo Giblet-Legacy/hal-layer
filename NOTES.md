@@ -9,6 +9,12 @@ NOTES.md — open questions, divergences and decisions for P15 HAL.
 - (none)
 
 ## Decisions
+- 2026-11-13 — Where a seal lives on a claim is now defined by P9
+  SPEC_V3 §3: `substrate_v3.link_attestation` stores it as evidence
+  of kind `attestation` (approve) or `refusal` (refuse). P15 is
+  unchanged; consumers call `verify_seal` first, then link it, as
+  well as appending it to the ledger. Recorded by the VS Code AI on
+  James's delegation ("fix all 11 issues").
 - Tier thresholds (0.60, 1.00, 1.50, 2.00) are the v1.0.0 defaults.
   These match the "quarantine below 0.60" rule from the architecture.
 - `separation: "none"` is unconditional in v1.0.0. This is the
